@@ -1,0 +1,194 @@
+[
+  {
+    "id": "housing",
+    "name_en": "Apartment Hunting",
+    "name_zh": "租房",
+    "category": "life",
+    "icon": "🏠",
+    "difficulty_default": "B1",
+    "description": "与房东/中介沟通看房、租约条款、押金、维修报修",
+    "persona": "Property Manager",
+    "opening_lines": [
+      "Hi! I saw your listing for the one-bedroom apartment. Is it still available?",
+      "Could you tell me more about the lease terms and the security deposit?"
+    ],
+    "cultural_notes": [
+      "Security deposit is typically one month's rent",
+      "Standard lease term is 12 months",
+      "Credit check is often required"
+    ],
+    "target_phrases": ["Is the apartment still available?", "What's included in the rent?", "How much is the security deposit?", "I'd like to schedule a viewing"],
+    "l1_pitfalls": {
+      "zh": ["冠词缺失: 'I want rent room' → 'I'd like to rent a room'", "介词: 'move in to' 用法"],
+      "es": ["depend of → depend on", "主语省略: '(It) is available?'"]
+    }
+  },
+  {
+    "id": "medical",
+    "name_en": "Doctor Visit",
+    "name_zh": "就医",
+    "category": "medical",
+    "icon": "🏥",
+    "difficulty_default": "B2",
+    "description": "预约挂号、描述症状、理解医嘱、医保沟通",
+    "persona": "Receptionist / Doctor",
+    "opening_lines": [
+      "I'd like to make an appointment to see a doctor.",
+      "I've been having a headache and a slight fever for two days."
+    ],
+    "cultural_notes": [
+      "Bring your insurance card to the appointment",
+      "Co-pay is required at the time of visit",
+      "It's okay to ask the doctor to repeat or explain"
+    ],
+    "target_phrases": ["I need to make an appointment", "I'm experiencing...", "How often should I take this medicine?", "Is this covered by my insurance?"],
+    "l1_pitfalls": {
+      "zh": ["时态: 'I have headache since two days' → 'I've had a headache for two days'", "可数/不可数: 'a headache' vs 'headache'"],
+      "es": ["ser/estar: 'I am sick' → 'I am feeling sick'", "假朋友: 'intoxicado'(食物中毒) ≠ 'intoxicated'(醉酒)"]
+    }
+  },
+  {
+    "id": "interview",
+    "name_en": "Job Interview",
+    "name_zh": "求职面试",
+    "category": "work",
+    "icon": "💼",
+    "difficulty_default": "B2",
+    "description": "自我介绍、经验描述、行为面试问题、薪资谈判",
+    "persona": "Hiring Manager",
+    "opening_lines": [
+      "Thank you for coming in today. Could you start by telling me a little about yourself?",
+      "What attracted you to this position?"
+    ],
+    "cultural_notes": [
+      "Eye contact and a firm handshake are expected",
+      "Use STAR method: Situation, Task, Action, Result",
+      "Research the company beforehand"
+    ],
+    "target_phrases": ["In my previous role, I was responsible for...", "One challenge I faced was...", "I'm particularly interested in this position because...", "Could you tell me about the team culture?"],
+    "l1_pitfalls": {
+      "zh": ["时态混乱: 过去经历用现在时", "直译: 'I think I can do this job' → 'I believe I'm well-suited for this role'"],
+      "es": ["do-support 缺失: 'You like coffee?' → 'Do you like coffee?'(面试问句结构)", "形容词后置迁移"]
+    }
+  },
+  {
+    "id": "campus",
+    "name_en": "Campus Life",
+    "name_zh": "校园生活",
+    "category": "campus",
+    "icon": "🎓",
+    "difficulty_default": "B1",
+    "description": "课程注册、与教授沟通、小组讨论、图书馆借阅",
+    "persona": "Academic Advisor / Classmate",
+    "opening_lines": [
+      "Hi Professor, I'd like to ask about the prerequisites for this course.",
+      "Could you explain the assignment requirements again?"
+    ],
+    "cultural_notes": [
+      "Address professors as 'Professor [Last Name]' unless told otherwise",
+      "Office hours are for asking questions outside class",
+      "Plagiarism is taken very seriously"
+    ],
+    "target_phrases": ["I have a question about the syllabus", "Could you clarify the deadline?", "I'd like to enroll in this class", "Where can I find the reading materials?"],
+    "l1_pitfalls": {
+      "zh": ["称呼: 'Teacher' → 'Professor'", "委婉过度: 'Maybe I think...' 直接表达更自然"],
+      "es": ["主谓一致: 'She don't' → 'She doesn't'", "所有格 's 缺失"]
+    }
+  },
+  {
+    "id": "transit",
+    "name_en": "Daily Commute",
+    "name_zh": "日常出行",
+    "category": "life",
+    "icon": "🚌",
+    "difficulty_default": "A2",
+    "description": "公交/地铁问路、买票、打车、方向指引",
+    "persona": "Station Agent / Driver",
+    "opening_lines": [
+      "Excuse me, how do I get to the nearest subway station?",
+      "Could you tell me which bus goes downtown?"
+    ],
+    "cultural_notes": [
+      "Have exact change ready for some buses",
+      "Stand on the right on escalators",
+      "Press the button to request a stop"
+    ],
+    "target_phrases": ["How do I get to...?", "Which line should I take?", "How much is a one-way ticket?", "Could you let me know when to get off?"],
+    "l1_pitfalls": {
+      "zh": ["介词: 'go to downtown' → 'go downtown'(downtown 副词)", "冠词: 'take a bus' vs 'take bus'"],
+      "es": ["介词: 'depend of' → 'depend on'", "语序: 'Where I can buy?' → 'Where can I buy?'"]
+    }
+  },
+  {
+    "id": "bank",
+    "name_en": "Banking",
+    "name_zh": "银行开户",
+    "category": "life",
+    "icon": "🏦",
+    "difficulty_default": "B1",
+    "description": "开户、存取款、转账、挂失、理解费用",
+    "persona": "Bank Teller",
+    "opening_lines": [
+      "I'd like to open a checking account, please.",
+      "What documents do I need to bring?"
+    ],
+    "cultural_notes": [
+      "Bring two forms of ID",
+      "Understand minimum balance requirements",
+      "Ask about monthly fees"
+    ],
+    "target_phrases": ["I'd like to open an account", "What's the minimum balance?", "How do I transfer money?", "I'd like to report a lost card"],
+    "l1_pitfalls": {
+      "zh": ["冠词缺失: 'open account' → 'open an account'", "可数/不可数: 'informations' → 'information'"],
+      "es": ["假朋友: 'éxito'(成功) ≠ 'exit'(出口)", "介词: 'transfer to' vs 'transfer for'"]
+    }
+  },
+  {
+    "id": "restaurant",
+    "name_en": "Restaurant",
+    "name_zh": "餐厅点餐",
+    "category": "life",
+    "icon": "🍽️",
+    "difficulty_default": "A2",
+    "description": "预订、点餐、特殊饮食需求、结账小费",
+    "persona": "Waiter / Waitress",
+    "opening_lines": [
+      "Hi, do you have a table for two?",
+      "Could I see the menu, please?"
+    ],
+    "cultural_notes": [
+      "Tipping 15-20% is expected in the US",
+      "It's okay to ask for modifications",
+      "Ask for the check when you're ready to leave"
+    ],
+    "target_phrases": ["Could we have a table for...?", "I'd like to order...", "Does this contain...?", "Could we get the check, please?"],
+    "l1_pitfalls": {
+      "zh": ["情态动词: 'I want' → 'I'd like'(更礼貌)", "复数: 'two coffee' → 'two coffees'"],
+      "es": ["主语省略: '(I) would like'", "复数 -s 缺失"]
+    }
+  },
+  {
+    "id": "workplace",
+    "name_en": "Workplace Meeting",
+    "name_zh": "职场会议",
+    "category": "work",
+    "icon": "📊",
+    "difficulty_default": "B2",
+    "description": "会议发言、汇报进度、提出建议、讨论分歧",
+    "persona": "Colleague / Manager",
+    "opening_lines": [
+      "I'd like to share an update on the project status.",
+      "I think we should consider an alternative approach."
+    ],
+    "cultural_notes": [
+      "Be concise and structured in meetings",
+      "It's okay to disagree respectfully",
+      "Follow up with meeting notes"
+    ],
+    "target_phrases": ["I'd like to add to that point", "Could we circle back to...?", "I see your point, but...", "Let's table this for now"],
+    "l1_pitfalls": {
+      "zh": ["时态: 汇报过去进度用过去时", "直译成语: '人多力量大' 等需意译"],
+      "es": ["语速过快吞音", "ser/estar 迁移到 be 动词"]
+    }
+  }
+]

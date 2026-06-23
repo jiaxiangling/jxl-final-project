@@ -1,0 +1,43 @@
+{
+  "zh": {
+    "pronunciation": [
+      {"pattern": "think|tink|sink|fink", "target": "/θ/ (think)", "note": "中文母语常把 /θ/ 发成 /s/ 或 /t/，注意舌尖要咬在上下齿之间", "example_incorrect": "I sink (think) we should go", "example_correct": "I think we should go"},
+      {"pattern": "that|dat|zat", "target": "/ð/ (that)", "note": "/ð/ 常被发成 /z/ 或 /d/，同样需要咬舌", "example_incorrect": "dat one", "example_correct": "that one"},
+      {"pattern": "very|wery", "target": "/v/ (very)", "note": "/v/ 与 /w/ 混淆，上齿需轻咬下唇并振动声带", "example_incorrect": "wery good", "example_correct": "very good"},
+      {"pattern": "right|light|wright", "target": "/r/ vs /l/", "note": "/r/ 与 /l/ 混淆，/r/ 舌尖卷起不接触上颚", "example_incorrect": "It's on the light (right)", "example_correct": "It's on the right"},
+      {"pattern": "beach|bitch", "target": "iː vs ɪ", "note": "长短元音不分可能导致严重误解", "example_incorrect": "I love the bitch (beach)", "example_correct": "I love the beach"}
+    ],
+    "grammar": [
+      {"pattern": "is no|are no|no have", "type": "missing_article", "note": "冠词缺失，中文没有冠词概念", "example_incorrect": "I want rent room", "example_correct": "I want to rent a room"},
+      {"pattern": "I no|he no|she no|they no", "type": "missing_be", "note": "be 动词或助动词缺失", "example_incorrect": "I no happy", "example_correct": "I am not happy"},
+      {"pattern": "yesterday I go|last week I eat|I call him yesterday", "type": "tense", "note": "过去时未用 -ed 形式", "example_incorrect": "Yesterday I go to school", "example_correct": "Yesterday I went to school"},
+      {"pattern": "two book|three apple|many cat", "type": "plural_s", "note": "可数名词复数未加 -s", "example_incorrect": "I have two book", "example_correct": "I have two books"},
+      {"pattern": "he go|she like|he work", "type": "sva", "note": "主谓一致：第三人称单数需加 -s", "example_incorrect": "He go to work", "example_correct": "He goes to work"}
+    ],
+    "translation": [
+      {"pattern": "open the light|close the light", "note": "中式直译：开灯/关灯", "example_incorrect": "Please open the light", "example_correct": "Please turn on the light"},
+      {"pattern": "play with phone|play phone", "note": "中式直译：玩手机", "example_incorrect": "Don't play with phone", "example_correct": "Don't look at your phone"},
+      {"pattern": "people mountain people sea", "note": "直译成语：人山人海", "example_incorrect": "It was people mountain people sea", "example_correct": "It was extremely crowded"}
+    ]
+  },
+  "es": {
+    "pronunciation": [
+      {"pattern": "very|berry|bary", "target": "/v/ (very)", "note": "西语 /b/ 与 /v/ 合流（baca=vaca），英语中需区分", "example_incorrect": "berry (very) good", "example_correct": "very good"},
+      {"pattern": "think|sink|tink", "target": "/θ/ (think)", "note": "seseo: 西语不分 /θ/ 和 /s/，英语中 think≠sink", "example_incorrect": "I sink (think) so", "example_correct": "I think so"},
+      {"pattern": "school|eschool|e-school", "target": "/sk/ (school)", "note": "辅音簇前加元音 /e/", "example_incorrect": "I go to eschool", "example_correct": "I go to school"},
+      {"pattern": "ship|chip", "target": "/ʃ/ vs /tʃ/", "note": "/ʃ/ 与 /tʃ/ 混淆", "example_incorrect": "I took a chip (ship)", "example_correct": "I took a ship"},
+      {"pattern": "zoo|soo", "target": "/z/ (zoo)", "note": "seseo: /z/ 发成 /s/", "example_incorrect": "I went to the soo (zoo)", "example_correct": "I went to the zoo"}
+    ],
+    "grammar": [
+      {"pattern": "is available|is good", "type": "pro_drop", "note": "主语省略：西语 pro-drop 迁移", "example_incorrect": "Is available?", "example_correct": "Is it available?"},
+      {"pattern": "I am sick|I am bored", "type": "ser_estar", "note": "ser/estar 迁移到 be 动词，状态变化用 'feeling'", "example_incorrect": "I am sick (permanent)", "example_correct": "I'm feeling sick"},
+      {"pattern": "depend of|consist of", "type": "preposition", "note": "介词误用：depend on 而非 depend of", "example_incorrect": "It depends of the weather", "example_correct": "It depends on the weather"},
+      {"pattern": "you like|you want", "type": "do_support", "note": "疑问句缺少助动词 do", "example_incorrect": "You like coffee?", "example_correct": "Do you like coffee?"},
+      {"pattern": "embarazada|exito|largo|sensible", "type": "false_friend", "note": "假朋友词：embarazada=怀孕≠embarrassed, éxito=成功≠exit, largo=长≠large, sensible=敏感≠sensible", "example_incorrect": "I am embarazada (embarrassed)", "example_correct": "I am embarrassed"}
+    ],
+    "translation": [
+      {"pattern": "I have 20 years", "note": "西语直译：tener X años", "example_incorrect": "I have 20 years", "example_correct": "I am 20 years old"},
+      {"pattern": "more better|more fast", "note": "比较级冗余加 more", "example_incorrect": "more better", "example_correct": "better"}
+    ]
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "housing": {
+    "B1": {
+      "objectives": ["询问房源可用性", "讨论租约条款与押金", "报修与维护沟通"],
+      "key_vocab": [
+        {"word": "lease", "ipa": "/liːs/", "def": "租约"},
+        {"word": "deposit", "ipa": "/dɪˈpɒzɪt/", "def": "押金"},
+        {"word": "utilities", "ipa": "/juːˈtɪlɪtiz/", "def": "水电等公用事业费"},
+        {"word": "tenant", "ipa": "/ˈtenənt/", "def": "租客"},
+        {"word": "available", "ipa": "/əˈveɪləbl/", "def": "可用的"}
+      ],
+      "model_dialogue": [
+        {"role": "manager", "text": "Hi! Are you calling about the one-bedroom on Main Street?"},
+        {"role": "learner", "text": "Yes, I am. Is it still available?"},
+        {"role": "manager", "text": "It is! The rent is $1,200 a month with a one-month security deposit."},
+        {"role": "learner", "text": "Does that include utilities?"}
+      ],
+      "tasks": ["角色扮演：询问房源与押金", "用3种方式请求看房", "练习报修对话"],
+      "cultural_notes": ["押金通常为一个月租金", "信用检查可能需要"]
+    },
+    "B2": {
+      "objectives": ["谈判租约条款", "处理租赁纠纷", "理解租客权利"],
+      "key_vocab": [
+        {"word": "sublease", "ipa": "/ˌsʌbˈliːs/", "def": "转租"},
+        {"word": "eviction", "ipa": "/ɪˈvɪkʃn/", "def": "驱逐"},
+        {"word": "liability", "ipa": "/ˌlaɪəˈbɪlɪti/", "def": "责任"}
+      ],
+      "model_dialogue": [
+        {"role": "manager", "text": "The lease is for 12 months. Are there any clauses you'd like to discuss?"},
+        {"role": "learner", "text": "I'd like to clarify the policy on early termination and subleasing."}
+      ],
+      "tasks": ["谈判提前解约条款", "讨论维修责任划分"],
+      "cultural_notes": ["租客有法定权利", "书面记录所有沟通"]
+    }
+  },
+  "medical": {
+    "B2": {
+      "objectives": ["准确描述症状", "理解医嘱与处方", "医保与费用沟通"],
+      "key_vocab": [
+        {"word": "symptom", "ipa": "/ˈsɪmptəm/", "def": "症状"},
+        {"word": "prescription", "ipa": "/prɪˈskrɪpʃn/", "def": "处方"},
+        {"word": "co-pay", "ipa": "/ˈkoʊpeɪ/", "def": "自付额"},
+        {"word": "insurance", "ipa": "/ɪnˈʃʊrəns/", "def": "保险"},
+        {"word": "appointment", "ipa": "/əˈpɔɪntmənt/", "def": "预约"}
+      ],
+      "model_dialogue": [
+        {"role": "doctor", "text": "What brings you in today?"},
+        {"role": "learner", "text": "I've been having a severe headache and a slight fever for the past two days."},
+        {"role": "doctor", "text": "I'll prescribe some medication. Take it twice a day after meals."},
+        {"role": "learner", "text": "Is this covered by my insurance?"}
+      ],
+      "tasks": ["角色扮演：预约挂号", "描述3种常见症状", "询问药物用法"],
+      "cultural_notes": ["就诊时需携带保险卡", "co-pay 在就诊时支付"]
+    },
+    "B1": {
+      "objectives": ["预约挂号", "描述基本症状", "理解简单医嘱"],
+      "key_vocab": [
+        {"word": "fever", "ipa": "/ˈfiːvər/", "def": "发烧"},
+        {"word": "headache", "ipa": "/ˈhedeɪk/", "def": "头痛"},
+        {"word": "medicine", "ipa": "/ˈmedsɪn/", "def": "药"}
+      ],
+      "model_dialogue": [
+        {"role": "receptionist", "text": "How can I help you?"},
+        {"role": "learner", "text": "I'd like to make an appointment. I have a headache and fever."}
+      ],
+      "tasks": ["练习预约对话", "描述感冒症状"],
+      "cultural_notes": ["可要求医生重复解释"]
+    }
+  },
+  "interview": {
+    "B2": {
+      "objectives": ["专业自我介绍", "用STAR方法描述经历", "得体提问与薪资沟通"],
+      "key_vocab": [
+        {"word": "qualifications", "ipa": "/ˌkwɒlɪfɪˈkeɪʃnz/", "def": "资质"},
+        {"word": "experience", "ipa": "/ɪkˈspɪriəns/", "def": "经验"},
+        {"word": "strengths", "ipa": "/streŋθs/", "def": "优势"},
+        {"word": "salary", "ipa": "/ˈsæləri/", "def": "薪资"},
+        {"word": "responsibilities", "ipa": "/rɪˌspɒnsəˈbɪlɪtiz/", "def": "职责"}
+      ],
+      "model_dialogue": [
+        {"role": "interviewer", "text": "Tell me about a challenge you faced and how you handled it."},
+        {"role": "learner", "text": "In my previous role, we had a tight deadline. I prioritized tasks and communicated with the team, and we delivered on time."},
+        {"role": "interviewer", "text": "Do you have any questions for us?"},
+        {"role": "learner", "text": "Yes, could you tell me more about the team culture and growth opportunities?"}
+      ],
+      "tasks": ["准备2分钟自我介绍", "用STAR回答行为面试题", "练习提问环节"],
+      "cultural_notes": ["眼神交流与有力握手", "提前研究公司"]
+    }
+  },
+  "campus": {
+    "B1": {
+      "objectives": ["课程注册沟通", "与教授邮件/面谈", "参与小组讨论"],
+      "key_vocab": [
+        {"word": "prerequisite", "ipa": "/priːˈrekwɪzɪt/", "def": "先修课"},
+        {"word": "syllabus", "ipa": "/ˈsɪləbəs/", "def": "教学大纲"},
+        {"word": "deadline", "ipa": "/ˈdedlaɪn/", "def": "截止日期"},
+        {"word": "enroll", "ipa": "/ɪnˈroʊl/", "def": "注册"},
+        {"word": "assignment", "ipa": "/əˈsaɪnmənt/", "def": "作业"}
+      ],
+      "model_dialogue": [
+        {"role": "professor", "text": "What can I help you with?"},
+        {"role": "learner", "text": "Professor Smith, I'd like to ask about the prerequisites for this course."}
+      ],
+      "tasks": ["练习与教授office hour对话", "写课程注册邮件"],
+      "cultural_notes": ["称呼教授为 Professor [姓]", "抄袭非常严重"]
+    }
+  },
+  "transit": {
+    "A2": {
+      "objectives": ["问路与方向", "购买车票", "理解站点广播"],
+      "key_vocab": [
+        {"word": "station", "ipa": "/ˈsteɪʃn/", "def": "车站"},
+        {"word": "ticket", "ipa": "/ˈtɪkɪt/", "def": "车票"},
+        {"word": "transfer", "ipa": "/ˈtrænsfɜːr/", "def": "换乘"},
+        {"word": "downtown", "ipa": "/ˌdaʊnˈtaʊn/", "def": "市中心"},
+        {"word": "direction", "ipa": "/dəˈrekʃn/", "def": "方向"}
+      ],
+      "model_dialogue": [
+        {"role": "agent", "text": "Where are you trying to go?"},
+        {"role": "learner", "text": "How do I get to downtown? Which bus should I take?"}
+      ],
+      "tasks": ["练习问路对话", "购买单程票"],
+      "cultural_notes": ["部分公交需准备零钱", "扶梯靠右站立"]
+    }
+  },
+  "bank": {
+    "B1": {
+      "objectives": ["开户流程沟通", "理解账户费用", "挂失与转账"],
+      "key_vocab": [
+        {"word": "account", "ipa": "/əˈkaʊnt/", "def": "账户"},
+        {"word": "balance", "ipa": "/ˈbæləns/", "def": "余额"},
+        {"word": "transfer", "ipa": "/ˈtrænsfɜːr/", "def": "转账"},
+        {"word": "ID", "ipa": "/ˌaɪˈdiː/", "def": "身份证明"},
+        {"word": "fee", "ipa": "/fiː/", "def": "费用"}
+      ],
+      "model_dialogue": [
+        {"role": "teller", "text": "How can I help you today?"},
+        {"role": "learner", "text": "I'd like to open a checking account. What documents do I need?"}
+      ],
+      "tasks": ["练习开户对话", "询问最低余额要求"],
+      "cultural_notes": ["需携带两种身份证明", "了解月费"]
+    }
+  },
+  "restaurant": {
+    "A2": {
+      "objectives": ["预订与入座", "点餐与特殊需求", "结账与小费"],
+      "key_vocab": [
+        {"word": "menu", "ipa": "/ˈmenjuː/", "def": "菜单"},
+        {"word": "order", "ipa": "/ˈɔːrdər/", "def": "点餐"},
+        {"word": "check", "ipa": "/tʃek/", "def": "账单"},
+        {"word": "tip", "ipa": "/tɪp/", "def": "小费"},
+        {"word": "allergy", "ipa": "/ˈælərdʒi/", "def": "过敏"}
+      ],
+      "model_dialogue": [
+        {"role": "waiter", "text": "Are you ready to order?"},
+        {"role": "learner", "text": "I'd like the grilled chicken, please. Does it contain any nuts?"}
+      ],
+      "tasks": ["练习点餐对话", "询问食物成分"],
+      "cultural_notes": ["小费15-20%", "可要求修改菜品"]
+    }
+  },
+  "workplace": {
+    "B2": {
+      "objectives": ["会议中清晰汇报", "提出建设性建议", "得体处理分歧"],
+      "key_vocab": [
+        {"word": "agenda", "ipa": "/əˈdʒendə/", "def": "议程"},
+        {"word": "deadline", "ipa": "/ˈdedlaɪn/", "def": "截止日期"},
+        {"word": "feedback", "ipa": "/ˈfiːdbæk/", "def": "反馈"},
+        {"word": "collaborate", "ipa": "/kəˈlæbəreɪt/", "def": "协作"},
+        {"word": "proposal", "ipa": "/prəˈpoʊzl/", "def": "提案"}
+      ],
+      "model_dialogue": [
+        {"role": "colleague", "text": "What's the status on your part of the project?"},
+        {"role": "learner", "text": "I've completed the research phase. I'd like to share my findings and propose next steps."}
+      ],
+      "tasks": ["练习30秒进度汇报", "用礼貌方式提出不同意见"],
+      "cultural_notes": ["会议发言要简洁有结构", "尊重不同意见"]
+    }
+  }
+}

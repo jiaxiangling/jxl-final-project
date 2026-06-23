@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+data/sessions/
+tools/data/phonetics_cache.json
+.DS_Store
