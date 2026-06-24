@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """课前页：信息收集 → 四维测评 → 雷达图 + 学习路径。"""
 
+import base64
 import json
 import os
 from typing import Any, Dict
@@ -103,9 +104,18 @@ def _render_assessment(llm, speech, profile: LearnerProfile) -> None:
                         try:
                             audio = speech.synthesize(q.get("audio_text", q["prompt"]))
                             if audio:
-                                st.audio(audio, format="audio/mp3")
-                        except Exception:
-                            st.warning("Audio playback failed. Read the text below.")
+                                b64 = base64.b64encode(audio).decode("utf-8")
+                                st.markdown(
+                                    f'<audio controls autoplay style="width:100%" '
+                                    f'src="data:audio/mp3;base64,{b64}"></audio>',
+                                    unsafe_allow_html=True,
+                                )
+                        except Exception as e:
+                            err_msg = str(e)
+                            if "insufficient_quota" in err_msg or "429" in err_msg:
+                                st.warning("⚠️ TTS 配额已用尽（API Key 余额不足），请阅读下方文字。")
+                            else:
+                                st.warning(f"⚠️ 音频播放失败：{err_msg[:100]}。请阅读下方文字。")
                     st.caption(f"Text: \"{q.get('audio_text', '')}\"")
                 else:
                     st.caption(f"Read: {q.get('audio_text', q['prompt'])}")
@@ -209,7 +219,7 @@ def _render_result(profile: LearnerProfile) -> None:
     st.divider()
 
     # 系统提示词预览
-    system_prompt_viewer(build_system_prompt(profile, None, None, 0))
+    system_prompt_viewer(build_system_prompt(profile, None, None, 0), key_suffix="pre_class")
 
     st.divider()
 

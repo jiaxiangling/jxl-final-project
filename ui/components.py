@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """可复用 UI 组件：徽章 / trace 面板 / 聊天气泡 / 工具卡 / 工作流图 / 提示词查看器。"""
 
+import base64
 import html
 import json
 from typing import Any, Dict, List, Optional
@@ -69,11 +70,10 @@ def agent_trace_panel(trace: TraceCollector) -> None:
         st.info("Agent trace will appear here during conversation.")
         return
 
-    # 决策摘要条
+    # 把所有 trace 事件拼成一个 HTML 块，一次性渲染，避免多个 st.markdown 触发 DOM 冲突
     summary = trace.decision_summary()
-    st.markdown(f'<div class="decision-summary">{summary}</div>', unsafe_allow_html=True)
+    parts = [f'<div class="decision-summary">{summary}</div>']
 
-    # 事件列表
     for event in trace.events:
         icon = trace.ICONS.get(event.kind, "•")
         css_class = {
@@ -91,12 +91,13 @@ def agent_trace_panel(trace: TraceCollector) -> None:
         if event.duration_ms:
             ms_html = f" <span style='font-size:11px;color:#94a3b8;'>({event.duration_ms}ms)</span>"
 
-        st.markdown(
+        parts.append(
             f'<div class="trace-event {css_class}">'
             f'{icon} <strong>Step {event.step}: {html.escape(event.title)}</strong>{ms_html}'
-            f'{detail_html}</div>',
-            unsafe_allow_html=True
+            f'{detail_html}</div>'
         )
+
+    st.markdown("".join(parts), unsafe_allow_html=True)
 
 
 def render_chat_message(role: str, text: str, audio: Optional[bytes] = None,
@@ -104,40 +105,50 @@ def render_chat_message(role: str, text: str, audio: Optional[bytes] = None,
     """渲染聊天气泡（含纠错高亮和音频播放）。"""
     with st.chat_message(role):
         if parsed:
-            # 纠错块
+            # 把所有自定义 HTML 块合并为一次渲染，避免 DOM 冲突
+            html_parts = []
             if parsed.get("correction"):
-                st.markdown(f'<div class="correction-block">📝 <strong>Correction:</strong><br>{html.escape(parsed["correction"])}</div>',
-                            unsafe_allow_html=True)
-            # 主回复
+                html_parts.append(f'<div class="correction-block">📝 <strong>Correction:</strong><br>{html.escape(parsed["correction"])}</div>')
+            if parsed.get("hint"):
+                html_parts.append(f'<div class="hint-block">💡 {html.escape(parsed["hint"])}</div>')
+            if html_parts:
+                st.markdown("".join(html_parts), unsafe_allow_html=True)
             if parsed.get("reply"):
                 st.markdown(parsed["reply"])
-            # 提示
-            if parsed.get("hint"):
-                st.markdown(f'<div class="hint-block">💡 {html.escape(parsed["hint"])}</div>',
-                            unsafe_allow_html=True)
         else:
             st.markdown(text)
 
-        # 音频播放
+        # 音频播放（使用原生 HTML audio 标签规避 st.audio DOM 冲突）
         if audio:
-            st.audio(audio, format="audio/mp3")
+            b64 = base64.b64encode(audio).decode("utf-8")
+            st.markdown(
+                f'<audio controls style="width:100%" '
+                f'src="data:audio/mp3;base64,{b64}"></audio>',
+                unsafe_allow_html=True,
+            )
 
 
-def system_prompt_viewer(prompt: str) -> None:
+def system_prompt_viewer(prompt: str, key_suffix: str = "default") -> None:
     """系统提示词查看器（按 === 分节折叠）。"""
     sections = prompt.split("=== ")
     with st.expander("📝 View System Prompt Architecture", expanded=False):
         st.caption("This is the complete system prompt that defines the AI coach's role, boundaries, rules, and safety constraints.")
+        # 使用 selectbox 切换章节，避免 expander 嵌套
+        titles = []
+        bodies = {}
         for section in sections:
             if not section.strip():
                 continue
-            # 提取节标题
             parts = section.split(" ===", 1)
             title = parts[0].strip()
             body = parts[1].strip() if len(parts) > 1 else ""
             if title:
-                with st.expander(f"📌 {title}", expanded=False):
-                    st.text(body[:2000] + ("..." if len(body) > 2000 else ""))
+                titles.append(title)
+                bodies[title] = body[:2000] + ("..." if len(body) > 2000 else "")
+
+        if titles:
+            selected = st.selectbox("Section", titles, key=f"sys_prompt_section_{key_suffix}")
+            st.text(bodies.get(selected, ""))
 
 
 def tool_summary_card(tools_used: List[Dict[str, Any]]) -> None:
@@ -145,7 +156,7 @@ def tool_summary_card(tools_used: List[Dict[str, Any]]) -> None:
     if not tools_used:
         return
     st.markdown("#### 🔧 Tool Calls This Turn")
-    for t in tools_used:
+    for idx, t in enumerate(tools_used):
         name = t.get("name", "?")
         args = t.get("arguments", {})
         result = t.get("result", {})
@@ -156,20 +167,26 @@ def tool_summary_card(tools_used: List[Dict[str, Any]]) -> None:
 def scenario_grid(scenarios: List[Dict[str, Any]]) -> None:
     """场景卡片网格。"""
     cols = st.columns(4)
+    # 把所有场景卡 HTML 按列收集后一次渲染，避免循环多次 unsafe_allow_html 产生 DOM 冲突
+    col_htmls: Dict[int, List[str]] = {c: [] for c in range(4)}
     for i, sc in enumerate(scenarios):
-        with cols[i % 4]:
-            icon = sc.get("icon", "💬")
-            name = sc.get("name_zh", sc.get("id", ""))
-            name_en = sc.get("name_en", "")
-            diff = sc.get("difficulty_default", "B1")
-            st.markdown(f"""
-            <div class="scenario-card">
-                <div style="font-size:24px;">{icon}</div>
-                <div style="font-weight:600;font-size:14px;">{name}</div>
-                <div style="font-size:11px;color:#64748b;">{name_en}</div>
-                <div style="font-size:11px;color:#8b5cf6;">CEFR {diff}</div>
-            </div>
-            """, unsafe_allow_html=True)
+        col_idx = i % 4
+        icon = sc.get("icon", "💬")
+        name = sc.get("name_zh", sc.get("id", ""))
+        name_en = sc.get("name_en", "")
+        diff = sc.get("difficulty_default", "B1")
+        col_htmls[col_idx].append(
+            f'<div class="scenario-card">'
+            f'<div style="font-size:24px;">{icon}</div>'
+            f'<div style="font-weight:600;font-size:14px;">{html.escape(name)}</div>'
+            f'<div style="font-size:11px;color:#64748b;">{html.escape(name_en)}</div>'
+            f'<div style="font-size:11px;color:#8b5cf6;">CEFR {html.escape(diff)}</div>'
+            f'</div>'
+        )
+    for col_idx, col in enumerate(cols):
+        with col:
+            if col_htmls[col_idx]:
+                st.markdown("".join(col_htmls[col_idx]), unsafe_allow_html=True)
 
 
 def render_tool_usage_sidebar(tools_used: List[Dict[str, Any]]) -> None:

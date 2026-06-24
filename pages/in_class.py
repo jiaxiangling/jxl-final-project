@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """课中页：语音对话 + ReAct trace + 工具调用 + 难度自适应（评分主舞台）。"""
 
+import base64
 import html
 from typing import Any, Dict, Optional
 
@@ -78,24 +79,33 @@ def render(orchestrator: ConversationOrchestrator, speech, profile) -> None:
 
     # ── 对话历史 ──
     st.subheader("💬 Conversation")
-    for turn in session.turns:
+    latest_turn_idx = len(session.turns) - 1
+    for turn_idx, turn in enumerate(session.turns):
         with st.chat_message("user"):
             st.markdown(turn.user_text)
         with st.chat_message("assistant"):
             parsed = parse_reply(turn.assistant_text)
+            # 把当前消息的所有 HTML 块拼成一个，一次性渲染，避免多次 unsafe_allow_html 触发 DOM 冲突
+            html_parts = []
             if parsed.get("correction"):
-                st.markdown(
+                html_parts.append(
                     f'<div class="correction-block">📝 <strong>Correction:</strong><br>'
-                    f'{html.escape(parsed["correction"])}</div>',
-                    unsafe_allow_html=True)
+                    f'{html.escape(parsed["correction"])}</div>')
+            if parsed.get("hint"):
+                html_parts.append(
+                    f'<div class="hint-block">💡 {html.escape(parsed["hint"])}</div>')
+            if html_parts:
+                st.markdown("".join(html_parts), unsafe_allow_html=True)
             if parsed.get("reply"):
                 st.markdown(parsed["reply"])
-            if parsed.get("hint"):
+            # 只播放最新一轮的音频，用原生 HTML audio 标签规避 st.audio DOM 冲突
+            if turn.assistant_audio and turn_idx == latest_turn_idx:
+                b64 = base64.b64encode(turn.assistant_audio).decode("utf-8")
                 st.markdown(
-                    f'<div class="hint-block">💡 {html.escape(parsed["hint"])}</div>',
-                    unsafe_allow_html=True)
-            if turn.assistant_audio:
-                st.audio(turn.assistant_audio, format="audio/mp3")
+                    f'<audio controls autoplay style="width:100%" '
+                    f'src="data:audio/mp3;base64,{b64}"></audio>',
+                    unsafe_allow_html=True,
+                )
 
     # ── 最近一轮 Trace ──
     if last_result:
