@@ -74,4 +74,5 @@ def image_download_button(fig: go.Figure, filename: str = "chart.png",
             mime="image/png",
         )
     else:
-        st.warning("图片导出不可用（kaleido 未安装）。请在浏览器中右键图表保存。")
+        # 云端环境常因 kaleido 二进制缺失导致导出失败，静默降级为提示保存
+        st.caption("💡 图片导出当前不可用，可在浏览器中右键图表保存。")
